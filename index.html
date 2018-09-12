@@ -1,23 +1,790 @@
 <!DOCTYPE html>
 <html>
+<head>
+<style>
+body,html{margin:0;padding:0;height:100%;
+scroll-snap-type:mandatory;
+}
+@font-face {
+font-family: Arizonia;
+src: url('fonts/Arizonia.ttf');
+}
+
+#signature{
+	position:absolute;
+	left:43%;
+	bottom:55%;
+}
+.wrap{
+  position:relative;
+  width:80vmin; height:80vmin;
+  margin:0 auto;
+  background:inherit;
+  transform:scale(0.2) translatez(0px);
+  opacity:0;
+  transition:transform .5s, opacity .5s;
+}
+.apage0{
+  position:absolute;
+  left:0; top:0;
+  width:47.5%; height:47.5%;
+  overflow:hidden;
+  transform:scale(.5) translateZ(0px);
+  background:#585247;
+}
+.apage0 div{
+  height:100%;
+  background-size:cover;
+  opacity:.5;
+  transition:opacity .5s;
+  border-radius:inherit;
+}
+.apage0:nth-child(1){
+  border-radius:40vmin 0 0 0;
+  transform-origin: 110% 110%;
+  transition:transform .4s .15s;
+}
+.apage0:nth-child(1) div{
+  background-image:url('molecule.jpg');
+}
+.apage0:nth-child(2){
+  border-radius:0 40vmin 0 0;
+  left:52.5%;
+  transform-origin: -10% 110%;
+  transition:transform .4s .2s;
+}
+.apage0:nth-child(2) div{
+  background-image:url('engin.jpg');
+}
+.apage0:nth-child(3){
+  border-radius:0 0 0 40vmin;
+  top:52.5%;
+  transform-origin: 110% -10%;
+  transition:transform .4s .25s;
+}
+.apage0:nth-child(3) div{
+  background-image:url('stocks.jpg');
+}
+.apage0:nth-child(4){
+  border-radius:0 0 40vmin 0;
+  top:52.5%; left:52.5%;
+  transform-origin: -10% -10%;
+  transition:transform .4s .3s;
+}
+.apage0:nth-child(4) div{
+  background-image: url('law.png');
+}
+.apage0:nth-child(5){
+  width:55%;height:55%;
+  left:22.5%; top:22.5%;
+  border-radius:50vmin;
+  box-shadow:0 0 0 5vmin #E3DFD2;
+  transform:scale(1);
+}
+.apage0:nth-child(5) div{
+  background-image: url('saurav.png');
+}
+#span01{
+  position:relative;
+  display:block;
+  margin:0 auto;
+  top:45vmin;
+  width:10vmin; height:10vmin;
+  border-radius:100%;
+  background:#585247;
+  transform:translateZ(0px);
+}
+#span01 span {
+  position:absolute;
+  width:60%;height:3px;
+  background:#ACA696;
+  left:20%; top:50%;
+  border-radius:0;
+}
+#span01 span:after, #span01 span:before{
+  content:'';
+  position:absolute;
+  left:0; top:-1.5vmin;
+  width:100%; height:100%;
+  background:inherit;
+}
+#span01 span:after{
+  top:1.5vmin;
+}
+#span01:hover + .wrap, .wrap:hover{
+  transform:scale(.8) translateZ(0px);
+  opacity:1;
+}
+#span01:hover + .wrap .apage0, .wrap:hover .apage0{
+  transform:scale(1) translatez(0px);
+}
+.apage0:hover div{
+  opacity:1;
+  transform:translatez(0px);
+}
+
+/*################*/
+
+.page{
+	clip: rect(auto, auto, auto, auto);
+  	scroll-snap-align: end;
+
+}
+#page0{background:#E3DFD2;box-shadow: inset 0 0 20vmin 0 #585247; height:100%; margin:0; padding:0;position:absolute;top:0; width:100%;}
+
+#page1,.message::before{
+	background: url("background.jpg")	0 / cover fixed;
+}
+#page1{
+	position:absolute;
+	height:100%;
+	top:100%;
+	z-index: 0;
+}
+#page2,.message2::before{
+	background: url("molecule.jpg") left top / cover fixed;
+}
+#page2{	
+	position:absolute;
+	top:200%;
+	z-index:0;
+	width:100%;
+	height:100%;
+	filter:brightness(100%);
+}
+#page3{
+	background:url("eni.png") left top / cover fixed;
+	position:absolute;
+	top:300%;
+	z-index:0;
+	width:100%;
+	height:100%;
+	filter:brightness(100%);
+}
+#page4{
+	background:url("nightsy.jpg") left top / cover fixed;
+	position:absolute;
+	top:400%;
+	z-index:0;
+	width:100%;
+	height:100%;
+}
+.my_image{}
+.my_images{
+	filter:contrast(50%) grayscale(90%);
+}
+.my_images3{
+}
+.message{
+	position:relative;
+	top:10%;
+	left:15%;
+	border-radius: 10px;
+  	overflow: hidden;
+  	width:70%;
+  	height:40%;
+	z-index:1;
+}
+.message::before{
+	position:absolute;
+	content: '';
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: -1;
+	filter:blur(10px) contrast(80%);
+}
+.message2{
+	position:relative;
+	top:10%;
+	left:15%;
+	border-radius: 10px;
+  	overflow: hidden;
+  	width:70%;
+  	height:40%;
+	z-index:1;
+}
+.message2::before{
+	position:absolute;
+	content: '';
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: -1;
+	filter:blur(5px) brightness(100%);
+}
+#name{
+	position:fixed;
+	z-index: 4;
+}
+
+#imgse{
+	position:fixed;
+	right:420px;
+	top:100px;
+	opacity:0;
+	z-index:0;
+}
+#name:hover + #imgse{
+	position:fixed;
+	left:420px;
+	top:-80px;
+	transform:scale(.5);	
+	opacity:1;
+	z-index:4;
+	transition-delay:0.5s;
+    transition-duration:0.8s;
+}
+
+#names{
+	z-index:2;
+	color:#2f4f4f;
+}
+#names3{
+	z-index:2;
+	color:black;
+}
+.fixed{
+    position:fixed;
+    top: 5%;
+   	left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
+}
+
+#sharing img{
+	position:fixed;
+	top:2%;
+	right:5%;
+	cursor:pointer;
+}
+.my_email{
+}
+.my_emails{
+	filter:contrast(50%) grayscale(90%);
+}
+.my_emails3{
+}
+#email img{
+	position:fixed;
+	top:1.5%;
+	right:10%;
+	cursor:pointer;
+}
+#resume{
+	position:absolute;
+	left:46.3%;
+	bottom:0.5%;
+}
+#resume img{
+	box-shadow: 5px 5px 5px black;
+}
+#resumeimg{
+	position:absolute;
+	left:46.3%;
+	bottom:1%;
+	width:140px;
+	height:200px;
+	border: 0px solid blue; 
+	background-color:black;
+	opacity:0;
+	z-index:2;
+	line-height:200px;
+	box-shadow: 5px 5px 5px black;
+
+}
+#resumeimg:hover{
+	z-index:3;
+	opacity:0.8;
+}
+
+#heading{
+	position:relative;
+	width:100px;
+	height:100px;
+	z-index:1;
+	top:8%;
+	left:45%;
+}
+#page2box1{
+	position:absolute;
+	width:310px;
+	height:300px;
+	left:10%;
+	top:18%;
+}
+#page2box2{
+	position:absolute;
+	width:310px;
+	height:300px;
+	left:40%;
+	top:18%;
+}
+#page2box3{
+	position:absolute;
+	width:310px;
+	height:300px;
+	left:70%;
+	top:18%;
+}
+#page2box4{
+	position:absolute;
+	width:310px;
+	height:300px;
+	left:400px;
+	top:60%;
+}
+#page2box5{
+	position:absolute;
+	width:310px;
+	height:300px;
+	left:30px;
+	top:60%;
+}
+
+.circle{
+	position:fixed;
+	width: 10px;
+	height: 10px;
+	left:720px;
+	top:60px;
+	border-radius:50%;
+	background-color: black;
+	z-index: 4;
+	transform: scale(40,0.1);
+	box-shadow:0px 0px 0px;
+}
+.circles{
+	position:fixed;
+	width: 10px;
+	height: 10px;
+	left:720px;
+	top:60px;
+	border-radius:50%;
+	background-color: #2f4f4f;
+	z-index: 4;
+	transform: scale(40,0.1);
+	box-shadow:0px 0px 0px;
+}
+.circles3{
+	position:fixed;
+	width: 10px;
+	height: 10px;
+	left:720px;
+	top:60px;
+	border-radius:50%;
+	background-color: black;
+	z-index: 4;
+	transform: scale(40,0.1);
+	box-shadow:0px 0px 0px;
+}
+.container {
+  position: absolute;
+  left:50%;
+  top:58%;
+  width: 24px;
+  height: 24px;
+}
+
+.chevron {
+  position: absolute;
+  width: 28px;
+  height: 8px;
+  opacity: 0;
+  transform: scale3d(0.5, 0.5, 0.5);
+  animation: move 3s ease-out infinite;
+}
+
+.chevron:first-child {
+  animation: move 3s ease-out 1s infinite;
+}
+
+.chevron:nth-child(2) {
+  animation: move 3s ease-out 2s infinite;
+}
+
+.chevron:before,
+.chevron:after {
+  content: ' ';
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 51%;
+  background: black;
+}
+
+.chevron:before {
+  left: 0;
+  transform: skew(0deg, 30deg);
+}
+
+.chevron:after {
+  right: 0;
+  width: 50%;
+  transform: skew(0deg, -30deg);
+}
+
+@keyframes move {
+  25% {
+    opacity: 1;
+
+  }
+  33% {
+    opacity: 1;
+    transform: translateY(30px);
+  }
+  67% {
+    opacity: 1;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(55px) scale3d(0.5, 0.5, 0.5);
+  }
+}
+
+.text {
+  display: block;
+  margin-top: 0px;
+  margin-left: -30px;
+  font-family: "Helvetica Neue", "Helvetica", Arial, sans-serif;
+  font-size: 12px;
+  color: #fff;
+  text-transform: uppercase;
+  white-space: nowrap;
+  opacity: .25;
+  animation: pulse 2s linear alternate infinite;
+}
+
+@keyframes pulse {
+  to {
+    opacity: 1;
+  }
+}
+
+
+.flip-container1 {
+  -webkit-perspective: 1000;
+  -moz-perspective: 1000;
+  -o-perspective: 1000;
+  perspective: 1000;
+}
+
+.flip-container1:hover .flipper1,  
+  .flip-container1.hover .flipper1 {
+		-webkit-transform: rotateY(180deg);
+		-moz-transform: rotateY(180deg);
+    	-o-transform: rotateY(180deg);
+		transform: rotateY(180deg);
+	}
+
+.flip-container1, #page2box2, .back1 {
+	position:absolute;
+	top:130px;
+	left:400px;
+	width: 320px;
+	height: 300px;
+}
+#page2box2{
+	height:300px;
+}
+
+
+.flipper1 {
+	-webkit-transition: 0.6s;
+	-webkit-transform-style: preserve-3d;
+
+	-moz-transition: 0.6s;
+	-moz-transform-style: preserve-3d;
+  
+  -o-transition: 0.6s;
+	-o-transform-style: preserve-3d;
+
+	transition: 0.6s;
+	transform-style: preserve-3d;
+}
+
+#page2box2, .back1 {
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+  -o-backface-visibility: hidden;
+	backface-visibility: hidden;
+
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.back1 {
+	-webkit-transform: rotateY(180deg);
+	-moz-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+	transform: rotateY(180deg);
+
+	background: #f8f8f8;
+}
+.back1 p,.back2 p,.back3 p {
+	position: absolute;
+	top: 10px;
+	left: 0;
+	right: 0;
+	text-align: center;
+  	font-family: arial;
+  	line-height: 2em;
+}
+
+.flip-container2 {
+  -webkit-perspective: 1000;
+  -moz-perspective: 1000;
+  -o-perspective: 1000;
+  perspective: 1000;
+}
+
+.flip-container2:hover .flipper2,  
+  .flip-container2.hover .flipper2 {
+		-webkit-transform: rotateY(180deg);
+		-moz-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+		transform: rotateY(180deg);
+	}
+
+.flip-container2, #page2box1, .back2 {
+	position:absolute;
+	top:130px;
+	left:30px;
+	width: 320px;
+	height: 300px;
+}
+#page2box1{
+	height:300px;
+}
+.flipper2 {
+	-webkit-transition: 0.6s;
+	-webkit-transform-style: preserve-3d;
+
+	-moz-transition: 0.6s;
+	-moz-transform-style: preserve-3d;
+  
+  -o-transition: 0.6s;
+	-o-transform-style: preserve-3d;
+
+	transition: 0.6s;
+	transform-style: preserve-3d;
+}
+
+#page2box1,.back2 {
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+  -o-backface-visibility: hidden;
+	backface-visibility: hidden;
+
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.back2 {
+	-webkit-transform: rotateY(180deg);
+	-moz-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+	transform: rotateY(180deg);
+	background: #f8f8f8;
+}
+
+
+.flip-container3 {
+  -webkit-perspective: 1000;
+  -moz-perspective: 1000;
+  -o-perspective: 1000;
+  perspective: 1000;
+}
+
+.flip-container3:hover .flipper3,  
+  .flip-container3.hover .flipper3 {
+		-webkit-transform: rotateY(180deg);
+		-moz-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+		transform: rotateY(180deg);
+	}
+
+.flip-container3, #page2box3, .back3 {
+	position:absolute;
+	top:130px;
+	left:750px;
+	width: 320px;
+	height: 300px;
+}
+#page2box3{
+	height:300px;
+}
+.flipper3 {
+	-webkit-transition: 0.6s;
+	-webkit-transform-style: preserve-3d;
+
+	-moz-transition: 0.6s;
+	-moz-transform-style: preserve-3d;
+  
+  -o-transition: 0.6s;
+	-o-transform-style: preserve-3d;
+
+	transition: 0.6s;
+	transform-style: preserve-3d;
+}
+
+#page2box3,.back3 {
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+  -o-backface-visibility: hidden;
+	backface-visibility: hidden;
+
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.back3 {
+	-webkit-transform: rotateY(180deg);
+	-moz-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+	transform: rotateY(180deg);
+	background: #f8f8f8;
+}
+#skillchart{
+	position:absolute;
+	width:300px;
+	height:100px;
+	top:100px;
+	left:50px;
+}
+</style>
+</head>
 <body>
+<div class="page" id="page0">
+<span id="span01"><span></span></span>
+<div id="signature" style="font-family:Arizonia,sans-serif;font-size:2em">Saurav Zangeneh </div>
+<div class="wrap">
+  <a class="apage0" href="#page2"><div></div></a>
+  <a class="apage0" href="#page3"><div></div></a>
+  <a class="apage0" href="#"><div></div></a>
+  <a class="apage0" href="#"><div></div></a>
+  <a class="apage0" href="#page1"><div></div></a>
+</div>
+</div>
 
-<h1>My First Web Page</h1>
-<p>My First Paragraph</p>
 
-<p id="demo"></p>
+<div class="page" id="page1" name="page1">
+	<div class="circle"></div>
+	<div id="name" class="fixed" style="font-size:1.8em;font-family:Lucida Sans Unicode,Lucida Grande, sans-serif"> Saurav Zangeneh </div>
+	<div id="imgse">
+		<img src="images/saurav.png">
+	</div>
+	<div class="my_image" id="sharing">
+		<a href="https://www.linkedin.com/in/sauravzangeneh"><img src="images/links.png" align="right"> 
+		</a>
+	</div>
+	<div class="my_email" id="email">
+		<a href="mailto:saurav.z@outlook.com">
+		<img src="images/email.png" align="right">
+		</a>
+	</div>
+	<div style="padding-bottom:50px"></div>
+	<div style="text-align:center;position:absolute;top:9%;left:28%;font-size:2.5em;color:black;font-family:Arizonia;">Diverse interests - A strength not a weakness.</div>
+	<div class="message">
+		<div style="text-align:center;font-size:1.5em;color:black;font-family:serif;padding-top:10px;"> <img src="images/imp.png"> <br><br> "A third-year Chemical Engineering student with a variety of interests and experiences." <br><br> "A successful consultant and advisor to help you identify markets and opportunities to grow your business." <br><br> "An experienced data science developer to help your company effectively utilise your data through Machine Learning."  ... If it's challenging, I'm interested.
+		</div>
+	</div>
+	<div id="resume">
+		<img src="images/cv.png" width=140px height=200px>
+	</div>
+	<div id="resumeimg" style="text-align:center;vertical-align:middle;font-size:1em;color:white">
+		<a style="text-decoration:none;color:white;font-family:monospace;font-size:1.6em;"href="images/Saurav%20Zangeneh.pdf" download>
+		Download
+		</a>
+	</div>
+	<div class="container">
+	  <div class="chevron"></div>
+	  <div class="chevron"></div>
+	  <div class="chevron"></div>
+	  <span class="text" style="color:black;">Discover more</span>
+	</div>
+</div>
+<div class="page" id="page2" name="page2">
+	<div id="names" class="fixed" style="font-size:1.8em;font-family:Lucida Sans Unicode,Lucida Grande, sans-serif"> Saurav Zangeneh </div>
+	<div class="circles" id="circle1"></div>
+	<div class="my_images" id="sharing">
+		<a href="https://www.linkedin.com/in/sauravzangeneh">
+		<img src="images/links.png" align="right"> 
+		</a></div>
+	<div class="my_emails" id="email">
+		<a href="mailto:saurav.z@outlook.com">
+		<img src="images/email.png" align="right">
+		</a></div>
 
-<script>
-document.getElementById("demo").innerHTML = 5 + 6;
-</script>
+	<div class="flip-container1" ontouchstart="this.classList.toggle('hover');">
+	  <div class="flipper1">
+	     <div class="message2" id="page2box2"><div style="text-align:center;font-size:1.5em;color:black;font-family:serif;padding-top:10px;"><img src="images/iis.png"><br><br> Microbiology and Cell Biology</div></div>
+	    <div class="back1">
+	      <p>Obtained funding and investigated the regulation of host cell signalling pathways during Coxsackie Virus B3 infection. <br><br> Successfully identified a transcription factor that is cleaved by the virus. </p>
+	    </div>
+	  </div>
+	</div>
 
-<div id="example"></div>
+	<div class="flip-container2" ontouchstart="this.classList.toggle('hover');">
+	  <div class="flipper2">
+		<div class="message2" id="page2box1"><div style="text-align:center;font-size:1.5em;color:black;font-family:serif;padding-top:10px;"><img src="images/iis.png"><br><br> Inorganic and Physical Chemistry</div></div>
+	    <div class="back2">
+	      <p>	Carried out the synthesis and characterization of iodothyronine deiodinase mimics thereby opening an avenue for more effective drugs to treat thyroid disorders.<br><br>Discovered and synthesized 5 new compounds that could be used as mimics.</p>
+	    </div>
+	  </div>
+ 	</div>
 
-<script>
-var txt = new Date()
+ 	<div class="flip-container3" ontouchstart="this.classList.toggle('hover');">
+	  <div class="flipper3">
+		<div class="message2" id="page2box3"><div style="text-align:center;font-size:1.5em;color:black;font-family:serif;padding-top:10px;"><img src="images/iis.png"><br><br> Chemical Engineering</div></div>
+	    <div class="back3">
+	      <p>Collaborated with a PhD student to solve a problem in microfluidics and successfully came up with a design for the same. <br><br>Developed and presented ideas for passive bar-coding of droplets.
+</p>
+	    </div>
+	  </div>
+ 	</div>
 
-document.getElementById("example").innerHTML=txt.getTime();
+	<div id="heading" style="text-align:center;font-size:2.5em;color:black;font-family:Arizonia;">Research</div>
+	
+	
+	<div class="message2" id="page2box4"><div style="text-align:center;font-size:1.5em;color:black;font-family:serif;padding-top:10px;"><img src="images/imp.png"><br><br>Chemical Engineering<br><br><i>Ongoing</i></div></div>
+	<div class="message2" id="page2box5"><div style="text-align:center;font-size:1.5em;color:black;font-family:serif;padding-top:10px;"><img src="images/imp.png"><br><br>Neuroscience<br><br><i>Ongoing</i></div></div>
+	
 
-</script>
+</div>
+<div class="page" id="page3">
+		<div id="names3" class="fixed" style="font-size:1.8em;font-family:Lucida Sans Unicode,Lucida Grande, sans-serif"> Saurav Zangeneh </div>
+	<div class="circles3" id="circle1"></div>
+	<div class="my_images3" id="sharing">
+		<a href="https://www.linkedin.com/in/sauravzangeneh">
+		<img src="images/links.png" align="right"> 
+		</a></div>
+	<div class="my_emails3" id="email">
+		<a href="mailto:saurav.z@outlook.com">
+		<img src="images/email.png" align="right">
+		</a></div>
+
+	<div id="heading" style="text-align:center;font-size:2.5em;color:black;font-family:Arizonia;">Technology</div>
+	
+	<div id="skillchart"></div>
+
+</div>
+
+</div>
+<div class="page" id="page4"></div>
+
+
+
+
+
+
+
 </body>
+
 </html>
